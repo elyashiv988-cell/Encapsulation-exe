@@ -145,6 +145,44 @@ user2.like("Yishai")
 user2.unlike("Yishai")
 user2.status()
 
+# 9
+
+class UserProfile:
+    def __init__(self,username):
+        self.username=username
+        self.__is_public=True
+        self.__show_email=False
+        self.__show_age=False
+    @property
+    def is_public(self):
+        return self.__is_public
+    @is_public.setter
+    def is_public(self,value):
+        self.__is_public=value if isinstance(value, bool) else print(f"is_public must be True or False")
+    @property
+    def show_email(self):
+        return self.__show_email
+    @show_email.setter
+    def show_email(self,value):
+        self.__show_email=value if isinstance(value, bool) else print(f"show_email must be True or False")
+    @property
+    def show_age(self):
+        return self.__show_age
+    @show_age.setter
+    def show_age(self,value):
+        self.__show_age=value  if isinstance(value, bool) else print(f"show_age must be True or False")
+
+    def privacy_summary(self):
+        print(f"is_public: {self.__is_public}|show_email:{self.__show_email}| show_age: {self.__show_age}")
+
+profile=UserProfile("elyashiv")
+profile.is_public="yes"
+profile.show_email=True
+profile.show_age=True
+profile.privacy_summary()       
+    
+
+        
 
          
          
