@@ -181,6 +181,62 @@ profile.show_email=True
 profile.show_age=True
 profile.privacy_summary()       
     
+# 10
+
+class UserAccount:
+    def __init__(self,username,email,password,age):
+        self.__username=username
+        self.__email=email
+        self.__password=password
+        self.__age=age
+        self.__logic_count=0
+    @property
+    def username(self):
+        return self.__username
+    @username.setter
+    def username(self,new_username):
+        if len(new_username)>=3:
+            self.__username=new_username
+    @property
+    def email(self):
+        return self.__email
+    @email.setter
+    def email(self,new_email):
+        if "@" in new_email:
+            self.__email=new_email
+    @property
+    def age(self):
+        return self.__age
+    @age.setter
+    def age(self,new_age):
+        if 13<=new_age<=120:
+            self.__age=new_age
+    def check_password(self,attempt):
+        if attempt==self.__password:
+            return self.__password
+        else:
+            print("worg password")
+    def change_password(self,old,new):
+        if self.__password==old:
+            self.__password=new
+        else:
+            print("worg password")
+        
+    def login(self,password):
+        if self.__password==password:
+            self.__logic_count+=1
+        else:
+            print("Login faild. ")
+    def account_summary(self):
+        print(f"Username: {self.__username} | Email: {self.__email} | Login count: {self.__logic_count}")
+              
+user1=UserAccount("user1", "u@mail.com", "pass123", 20)
+user1.login("123")
+user1.login("eli")
+user1.login("pass123")
+user1.email="eli@988"
+user1.age=24
+user1.account_summary()
 
         
 
